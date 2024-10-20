@@ -65,5 +65,15 @@ namespace WakVRC
 			foreach (Collider c in disableColliders)
 					c.enabled = !Active;
 		}
+
+		public void RegisterActiveCanvasGroup(CanvasGroup canvasGroup)
+		{
+			MDataUtil.Add(ref activeCanvasGroups, canvasGroup);
+		}
+
+		public void RegisterDisableCanvasGroup(CanvasGroup canvasGroup)
+		{
+			MDataUtil.Add(ref disableCanvasGroups, canvasGroup);
+		}
 	}
 }
