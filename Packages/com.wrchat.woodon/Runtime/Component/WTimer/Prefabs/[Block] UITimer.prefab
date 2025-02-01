@@ -93,8 +93,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
+<<<<<<< HEAD
   m_fontSize: 40
   m_fontSizeBase: 40
+=======
+  m_fontSize: 20
+  m_fontSizeBase: 20
+>>>>>>> upstream/main
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -244,7 +249,11 @@ PrefabInstance:
     - target: {fileID: 613757047644303135, guid: e002ba941fe96334da2a46058c114815,
         type: 3}
       propertyPath: m_text
+<<<<<<< HEAD
       value: "\uD1A0\uAE00"
+=======
+      value: "\uD0C0\uC774\uBA38 \uD1A0\uAE00"
+>>>>>>> upstream/main
       objectReference: {fileID: 0}
     - target: {fileID: 1510242249456524852, guid: e002ba941fe96334da2a46058c114815,
         type: 3}
@@ -279,7 +288,11 @@ PrefabInstance:
     - target: {fileID: 2014848354449385375, guid: e002ba941fe96334da2a46058c114815,
         type: 3}
       propertyPath: m_SizeDelta.x
+<<<<<<< HEAD
       value: 69.16
+=======
+      value: 91.06
+>>>>>>> upstream/main
       objectReference: {fileID: 0}
     - target: {fileID: 2014848354449385375, guid: e002ba941fe96334da2a46058c114815,
         type: 3}
@@ -289,7 +302,11 @@ PrefabInstance:
     - target: {fileID: 2014848354449385375, guid: e002ba941fe96334da2a46058c114815,
         type: 3}
       propertyPath: m_AnchoredPosition.x
+<<<<<<< HEAD
       value: 44.58
+=======
+      value: 55.53
+>>>>>>> upstream/main
       objectReference: {fileID: 0}
     - target: {fileID: 2014848354449385375, guid: e002ba941fe96334da2a46058c114815,
         type: 3}

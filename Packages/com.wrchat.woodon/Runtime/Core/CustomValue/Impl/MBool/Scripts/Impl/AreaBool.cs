@@ -1,7 +1,11 @@
 ﻿using UdonSharp;
 using UnityEngine;
 using VRC.SDKBase;
+<<<<<<< HEAD
 using static WRC.Woodon.MUtil;
+=======
+using static WRC.Woodon.WUtil;
+>>>>>>> upstream/main
 
 namespace WRC.Woodon
 {
@@ -9,7 +13,11 @@ namespace WRC.Woodon
 	public class AreaBool : MBool
 	{
 		[Header("_" + nameof(AreaBool))]
+<<<<<<< HEAD
 		[SerializeField] private BoxCollider[] areaColliders;
+=======
+		[SerializeField] private Collider[] areaColliders;
+>>>>>>> upstream/main
 		[SerializeField] private float updateDelay = 0.1f;
 		[SerializeField] private bool checkOnlyLocalPlayer = true;
 		private Bounds[] boundsArray;

@@ -4,6 +4,10 @@ using UnityEngine.UI;
 
 namespace WRC.Woodon
 {
+<<<<<<< HEAD
+=======
+	// TODO: 슬라이버 보정을 IncreaseAmount, DecreaseAmount로 해야할지
+>>>>>>> upstream/main
 	[UdonBehaviourSyncMode(BehaviourSyncMode.None)]
 	public class UIMValueSlider : MValueFollower
 	{

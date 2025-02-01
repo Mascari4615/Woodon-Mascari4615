@@ -44,7 +44,11 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
+<<<<<<< HEAD
       Data: 11
+=======
+      Data: 8
+>>>>>>> upstream/main
     - Name: 
       Entry: 7
       Data: 
@@ -119,19 +123,31 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 1
+<<<<<<< HEAD
       Data: voiceManager
+=======
+      Data: <Tag>k__BackingField
+>>>>>>> upstream/main
     - Name: $v
       Entry: 7
       Data: 7|UdonSharp.Compiler.FieldDefinition, UdonSharp.Editor
     - Name: <Name>k__BackingField
       Entry: 1
+<<<<<<< HEAD
       Data: voiceManager
+=======
+      Data: <Tag>k__BackingField
+>>>>>>> upstream/main
     - Name: <UserType>k__BackingField
       Entry: 7
       Data: 8|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
+<<<<<<< HEAD
       Data: WRC.Woodon.VoiceManager, Woodon
+=======
+      Data: WRC.Woodon.VoiceTag, Woodon
+>>>>>>> upstream/main
     - Name: 
       Entry: 8
       Data: 
@@ -140,7 +156,11 @@ MonoBehaviour:
       Data: 9|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
+<<<<<<< HEAD
       Data: VRC.Udon.UdonBehaviour, VRC.Udon
+=======
+      Data: System.Int32, mscorlib
+>>>>>>> upstream/main
     - Name: 
       Entry: 8
       Data: 
@@ -194,23 +214,36 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 1
+<<<<<<< HEAD
       Data: <Tag>k__BackingField
+=======
+      Data: updateTerm
+>>>>>>> upstream/main
     - Name: $v
       Entry: 7
       Data: 13|UdonSharp.Compiler.FieldDefinition, UdonSharp.Editor
     - Name: <Name>k__BackingField
       Entry: 1
+<<<<<<< HEAD
       Data: <Tag>k__BackingField
+=======
+      Data: updateTerm
+>>>>>>> upstream/main
     - Name: <UserType>k__BackingField
       Entry: 7
       Data: 14|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
+<<<<<<< HEAD
       Data: WRC.Woodon.VoiceAreaTag, Woodon
+=======
+      Data: System.Single, mscorlib
+>>>>>>> upstream/main
     - Name: 
       Entry: 8
       Data: 
     - Name: <SystemType>k__BackingField
+<<<<<<< HEAD
       Entry: 7
       Data: 15|System.RuntimeType, mscorlib
     - Name: 
@@ -219,6 +252,10 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
+=======
+      Entry: 9
+      Data: 14
+>>>>>>> upstream/main
     - Name: <SyncMode>k__BackingField
       Entry: 7
       Data: System.Nullable`1[[UdonSharp.UdonSyncMode, UdonSharp.Runtime]], mscorlib
@@ -233,13 +270,21 @@ MonoBehaviour:
       Data: true
     - Name: _fieldAttributes
       Entry: 7
+<<<<<<< HEAD
       Data: 16|System.Collections.Generic.List`1[[System.Attribute, mscorlib]], mscorlib
+=======
+      Data: 15|System.Collections.Generic.List`1[[System.Attribute, mscorlib]], mscorlib
+>>>>>>> upstream/main
     - Name: 
       Entry: 12
       Data: 1
     - Name: 
       Entry: 7
+<<<<<<< HEAD
       Data: 17|UnityEngine.SerializeField, UnityEngine.CoreModule
+=======
+      Data: 16|UnityEngine.SerializeField, UnityEngine.CoreModule
+>>>>>>> upstream/main
     - Name: 
       Entry: 8
       Data: 
@@ -260,6 +305,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 1
+<<<<<<< HEAD
       Data: updateTerm
     - Name: $v
       Entry: 7
@@ -273,12 +319,38 @@ MonoBehaviour:
     - Name: 
       Entry: 1
       Data: System.Single, mscorlib
+=======
+      Data: localPlayerIn
+    - Name: $v
+      Entry: 7
+      Data: 17|UdonSharp.Compiler.FieldDefinition, UdonSharp.Editor
+    - Name: <Name>k__BackingField
+      Entry: 1
+      Data: localPlayerIn
+    - Name: <UserType>k__BackingField
+      Entry: 7
+      Data: 18|System.RuntimeType, mscorlib
+    - Name: 
+      Entry: 1
+      Data: WRC.Woodon.MBool, Woodon
+>>>>>>> upstream/main
     - Name: 
       Entry: 8
       Data: 
     - Name: <SystemType>k__BackingField
+<<<<<<< HEAD
       Entry: 9
       Data: 19
+=======
+      Entry: 7
+      Data: 19|System.RuntimeType, mscorlib
+    - Name: 
+      Entry: 1
+      Data: VRC.Udon.UdonBehaviour, VRC.Udon
+    - Name: 
+      Entry: 8
+      Data: 
+>>>>>>> upstream/main
     - Name: <SyncMode>k__BackingField
       Entry: 7
       Data: System.Nullable`1[[UdonSharp.UdonSyncMode, UdonSharp.Runtime]], mscorlib
@@ -320,12 +392,17 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 1
+<<<<<<< HEAD
       Data: localPlayerIn
+=======
+      Data: someoneIn
+>>>>>>> upstream/main
     - Name: $v
       Entry: 7
       Data: 22|UdonSharp.Compiler.FieldDefinition, UdonSharp.Editor
     - Name: <Name>k__BackingField
       Entry: 1
+<<<<<<< HEAD
       Data: localPlayerIn
     - Name: <UserType>k__BackingField
       Entry: 7
@@ -339,6 +416,15 @@ MonoBehaviour:
     - Name: <SystemType>k__BackingField
       Entry: 9
       Data: 9
+=======
+      Data: someoneIn
+    - Name: <UserType>k__BackingField
+      Entry: 9
+      Data: 18
+    - Name: <SystemType>k__BackingField
+      Entry: 9
+      Data: 19
+>>>>>>> upstream/main
     - Name: <SyncMode>k__BackingField
       Entry: 7
       Data: System.Nullable`1[[UdonSharp.UdonSyncMode, UdonSharp.Runtime]], mscorlib
@@ -353,13 +439,21 @@ MonoBehaviour:
       Data: true
     - Name: _fieldAttributes
       Entry: 7
+<<<<<<< HEAD
       Data: 24|System.Collections.Generic.List`1[[System.Attribute, mscorlib]], mscorlib
+=======
+      Data: 23|System.Collections.Generic.List`1[[System.Attribute, mscorlib]], mscorlib
+>>>>>>> upstream/main
     - Name: 
       Entry: 12
       Data: 1
     - Name: 
       Entry: 7
+<<<<<<< HEAD
       Data: 25|UnityEngine.SerializeField, UnityEngine.CoreModule
+=======
+      Data: 24|UnityEngine.SerializeField, UnityEngine.CoreModule
+>>>>>>> upstream/main
     - Name: 
       Entry: 8
       Data: 
@@ -380,6 +474,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 1
+<<<<<<< HEAD
       Data: isLocalPlayerIn
     - Name: $v
       Entry: 7
@@ -441,6 +536,33 @@ MonoBehaviour:
     - Name: <SystemType>k__BackingField
       Entry: 9
       Data: 9
+=======
+      Data: mTargets
+    - Name: $v
+      Entry: 7
+      Data: 25|UdonSharp.Compiler.FieldDefinition, UdonSharp.Editor
+    - Name: <Name>k__BackingField
+      Entry: 1
+      Data: mTargets
+    - Name: <UserType>k__BackingField
+      Entry: 7
+      Data: 26|System.RuntimeType, mscorlib
+    - Name: 
+      Entry: 1
+      Data: WRC.Woodon.MTarget[], Woodon
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: <SystemType>k__BackingField
+      Entry: 7
+      Data: 27|System.RuntimeType, mscorlib
+    - Name: 
+      Entry: 1
+      Data: UnityEngine.Component[], UnityEngine.CoreModule
+    - Name: 
+      Entry: 8
+      Data: 
+>>>>>>> upstream/main
     - Name: <SyncMode>k__BackingField
       Entry: 7
       Data: System.Nullable`1[[UdonSharp.UdonSyncMode, UdonSharp.Runtime]], mscorlib
@@ -455,10 +577,26 @@ MonoBehaviour:
       Data: true
     - Name: _fieldAttributes
       Entry: 7
+<<<<<<< HEAD
       Data: 29|System.Collections.Generic.List`1[[System.Attribute, mscorlib]], mscorlib
     - Name: 
       Entry: 12
       Data: 1
+=======
+      Data: 28|System.Collections.Generic.List`1[[System.Attribute, mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 29|UnityEngine.HeaderAttribute, UnityEngine.CoreModule
+    - Name: header
+      Entry: 1
+      Data: _VoiceRoom
+    - Name: 
+      Entry: 8
+      Data: 
+>>>>>>> upstream/main
     - Name: 
       Entry: 7
       Data: 30|UnityEngine.SerializeField, UnityEngine.CoreModule
@@ -482,12 +620,17 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 1
+<<<<<<< HEAD
       Data: isSomeoneIn
+=======
+      Data: <IsPlayerInside>k__BackingField
+>>>>>>> upstream/main
     - Name: $v
       Entry: 7
       Data: 31|UdonSharp.Compiler.FieldDefinition, UdonSharp.Editor
     - Name: <Name>k__BackingField
       Entry: 1
+<<<<<<< HEAD
       Data: isSomeoneIn
     - Name: <UserType>k__BackingField
       Entry: 9
@@ -495,6 +638,21 @@ MonoBehaviour:
     - Name: <SystemType>k__BackingField
       Entry: 9
       Data: 3
+=======
+      Data: <IsPlayerInside>k__BackingField
+    - Name: <UserType>k__BackingField
+      Entry: 7
+      Data: 32|System.RuntimeType, mscorlib
+    - Name: 
+      Entry: 1
+      Data: WRC.Woodon.MBool[], Woodon
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: <SystemType>k__BackingField
+      Entry: 9
+      Data: 27
+>>>>>>> upstream/main
     - Name: <SyncMode>k__BackingField
       Entry: 7
       Data: System.Nullable`1[[UdonSharp.UdonSyncMode, UdonSharp.Runtime]], mscorlib
@@ -506,6 +664,7 @@ MonoBehaviour:
       Data: 
     - Name: <IsSerialized>k__BackingField
       Entry: 5
+<<<<<<< HEAD
       Data: false
     - Name: _fieldAttributes
       Entry: 7
@@ -513,6 +672,21 @@ MonoBehaviour:
     - Name: 
       Entry: 12
       Data: 0
+=======
+      Data: true
+    - Name: _fieldAttributes
+      Entry: 7
+      Data: 33|System.Collections.Generic.List`1[[System.Attribute, mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 34|UnityEngine.SerializeField, UnityEngine.CoreModule
+    - Name: 
+      Entry: 8
+      Data: 
+>>>>>>> upstream/main
     - Name: 
       Entry: 13
       Data: 
@@ -530,6 +704,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 1
+<<<<<<< HEAD
       Data: mTargets
     - Name: $v
       Entry: 7
@@ -543,10 +718,26 @@ MonoBehaviour:
     - Name: 
       Entry: 1
       Data: WRC.Woodon.MTarget[], Woodon
+=======
+      Data: isLocked_Timer
+    - Name: $v
+      Entry: 7
+      Data: 35|UdonSharp.Compiler.FieldDefinition, UdonSharp.Editor
+    - Name: <Name>k__BackingField
+      Entry: 1
+      Data: isLocked_Timer
+    - Name: <UserType>k__BackingField
+      Entry: 7
+      Data: 36|System.RuntimeType, mscorlib
+    - Name: 
+      Entry: 1
+      Data: WRC.Woodon.Timer, Woodon
+>>>>>>> upstream/main
     - Name: 
       Entry: 8
       Data: 
     - Name: <SystemType>k__BackingField
+<<<<<<< HEAD
       Entry: 7
       Data: 35|System.RuntimeType, mscorlib
     - Name: 
@@ -555,6 +746,10 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
+=======
+      Entry: 9
+      Data: 19
+>>>>>>> upstream/main
     - Name: <SyncMode>k__BackingField
       Entry: 7
       Data: System.Nullable`1[[UdonSharp.UdonSyncMode, UdonSharp.Runtime]], mscorlib
@@ -569,6 +764,7 @@ MonoBehaviour:
       Data: true
     - Name: _fieldAttributes
       Entry: 7
+<<<<<<< HEAD
       Data: 36|System.Collections.Generic.List`1[[System.Attribute, mscorlib]], mscorlib
     - Name: 
       Entry: 12
@@ -582,6 +778,12 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
+=======
+      Data: 37|System.Collections.Generic.List`1[[System.Attribute, mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+>>>>>>> upstream/main
     - Name: 
       Entry: 7
       Data: 38|UnityEngine.SerializeField, UnityEngine.CoreModule
@@ -601,6 +803,7 @@ MonoBehaviour:
       Entry: 8
       Data: 
     - Name: 
+<<<<<<< HEAD
       Entry: 7
       Data: 
     - Name: $k
@@ -721,6 +924,8 @@ MonoBehaviour:
       Entry: 8
       Data: 
     - Name: 
+=======
+>>>>>>> upstream/main
       Entry: 13
       Data: 
     - Name: 

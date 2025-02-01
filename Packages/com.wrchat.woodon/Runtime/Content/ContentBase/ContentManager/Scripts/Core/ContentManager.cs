@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 ﻿
 using System;
 using UdonSharp;
 using UnityEngine;
+=======
+﻿using System;
+using UdonSharp;
+using UnityEngine;
+using VRC.SDK3.Data;
+>>>>>>> upstream/main
 using VRC.SDKBase;
 using VRC.Udon;
 
@@ -15,6 +22,7 @@ namespace WRC.Woodon
 		[field: Header("_" + nameof(ContentManager))]
 		[SerializeField] private int stateMax = 1;
 
+<<<<<<< HEAD
 		[UdonSynced, FieldChangeCallback(nameof(CurGameState))] private int _curGameState = 0;
 		public int CurGameState
 		{
@@ -27,21 +35,40 @@ namespace WRC.Woodon
 				_curGameState = value;
 				OnGameStateChange(DataChangeStateUtil.GetChangeState(origin, value));
 			}
+=======
+		[SerializeField] protected WJson contentData;
+
+		public int CurGameState
+		{
+			get => contentData.GetData("CurGameState", 0);
+			private set => contentData.SetData("CurGameState", value);
+>>>>>>> upstream/main
 		}
 
 		protected virtual void OnGameStateChange(DataChangeState changeState)
 		{
+<<<<<<< HEAD
 			// MDebugLog($"{nameof(OnGameStateChange)}, {changeState}");
 
 			UpdateContent();
+=======
+			MDebugLog($"{nameof(OnGameStateChange)}, {changeState}");
+
+			// UpdateContent();
+>>>>>>> upstream/main
 			SendEvents();
 		}
 
 		public void SetGameState(int newGameState)
 		{
+<<<<<<< HEAD
 			SetOwner();
 			CurGameState = (newGameState + stateMax) % stateMax;
 			RequestSerialization();
+=======
+			CurGameState = (newGameState + stateMax) % stateMax;
+			contentData.SerializeData();
+>>>>>>> upstream/main
 		}
 		public void SetGameState(Enum newGameState) => SetGameState(Convert.ToInt32(newGameState));
 
@@ -62,6 +89,7 @@ namespace WRC.Woodon
 		protected virtual void Init()
 		{
 			// MDebugLog($"{nameof(Init)}");
+<<<<<<< HEAD
 
 			if (IsInited)
 				return;
@@ -71,6 +99,34 @@ namespace WRC.Woodon
 
 			for (int i = 0; i < MSeats.Length; i++)
 				MSeats[i].Init(this, i);
+=======
+			if (IsInited)
+				return;
+			
+			{
+				MSeats = GetComponentsInChildren<MSeat>();
+				contentData.RegisterListener(this, nameof(OnContentDataChanged), WJsonEvent.OnDeserialization);
+			
+				for (int i = 0; i < MSeats.Length; i++)
+					MSeats[i].Init(this, i);
+
+				if (Networking.IsMaster)
+				{
+					CurGameState = 0;
+					contentData.SerializeData();
+				}
+			}
+			
+			IsInited = true;
+		}
+
+		public virtual void OnContentDataChanged()
+		{
+			if (contentData.HasDataChanged("CurGameState", out int origin, out int cur))
+				OnGameStateChange(DataChangeStateUtil.GetChangeState(origin, cur));
+
+			UpdateContent();
+>>>>>>> upstream/main
 		}
 
 		public virtual void UpdateContent()
@@ -151,7 +207,11 @@ namespace WRC.Woodon
 				}
 			}
 
+<<<<<<< HEAD
 			MDataUtil.ResizeArr(ref maxTurnDataSeats, maxTurnDataCount);
+=======
+			WUtil.Resize(ref maxTurnDataSeats, maxTurnDataCount);
+>>>>>>> upstream/main
 
 			return maxTurnDataSeats;
 		}

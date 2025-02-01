@@ -21,7 +21,11 @@ MonoBehaviour:
   compiledVersion: 2
   behaviourSyncMode: 3
   hasInteractEvent: 0
+<<<<<<< HEAD
   scriptID: -1713050902054363403
+=======
+  scriptID: 5101644270661162286
+>>>>>>> upstream/main
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
@@ -752,7 +756,11 @@ MonoBehaviour:
       Data: 48|UnityEngine.HeaderAttribute, UnityEngine.CoreModule
     - Name: header
       Entry: 1
+<<<<<<< HEAD
       Data: _MMike
+=======
+      Data: _WMike
+>>>>>>> upstream/main
     - Name: 
       Entry: 8
       Data: 

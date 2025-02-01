@@ -18,14 +18,22 @@ namespace WRC.Woodon
 
 		public override void SerializeData()
 		{
+<<<<<<< HEAD
 			mData.SetData("Used", Used);
+=======
+			wJson.SetData("Used", Used);
+>>>>>>> upstream/main
 			base.SerializeData();
 		}
 
 		public override void ParseData()
 		{
 			base.ParseData();
+<<<<<<< HEAD
 			Used = mData.DataDictionary["Used"].Boolean;
+=======
+			Used = wJson.DataDictionary["Used"].Boolean;
+>>>>>>> upstream/main
 		}
 	}
 }

@@ -44,7 +44,11 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
+<<<<<<< HEAD
       Data: 9
+=======
+      Data: 10
+>>>>>>> upstream/main
     - Name: 
       Entry: 7
       Data: 
@@ -119,19 +123,31 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 1
+<<<<<<< HEAD
       Data: rayObject
+=======
+      Data: bone
+>>>>>>> upstream/main
     - Name: $v
       Entry: 7
       Data: 7|UdonSharp.Compiler.FieldDefinition, UdonSharp.Editor
     - Name: <Name>k__BackingField
       Entry: 1
+<<<<<<< HEAD
       Data: rayObject
+=======
+      Data: bone
+>>>>>>> upstream/main
     - Name: <UserType>k__BackingField
       Entry: 7
       Data: 8|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
+<<<<<<< HEAD
       Data: UnityEngine.Transform, UnityEngine.CoreModule
+=======
+      Data: UnityEngine.HumanBodyBones, UnityEngine.AnimationModule
+>>>>>>> upstream/main
     - Name: 
       Entry: 8
       Data: 
@@ -188,19 +204,31 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 1
+<<<<<<< HEAD
       Data: distance
+=======
+      Data: rayObject
+>>>>>>> upstream/main
     - Name: $v
       Entry: 7
       Data: 12|UdonSharp.Compiler.FieldDefinition, UdonSharp.Editor
     - Name: <Name>k__BackingField
       Entry: 1
+<<<<<<< HEAD
       Data: distance
+=======
+      Data: rayObject
+>>>>>>> upstream/main
     - Name: <UserType>k__BackingField
       Entry: 7
       Data: 13|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
+<<<<<<< HEAD
       Data: System.Single, mscorlib
+=======
+      Data: UnityEngine.Transform, UnityEngine.CoreModule
+>>>>>>> upstream/main
     - Name: 
       Entry: 8
       Data: 
@@ -248,19 +276,31 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 1
+<<<<<<< HEAD
       Data: raycastHit
+=======
+      Data: distance
+>>>>>>> upstream/main
     - Name: $v
       Entry: 7
       Data: 16|UdonSharp.Compiler.FieldDefinition, UdonSharp.Editor
     - Name: <Name>k__BackingField
       Entry: 1
+<<<<<<< HEAD
       Data: raycastHit
+=======
+      Data: distance
+>>>>>>> upstream/main
     - Name: <UserType>k__BackingField
       Entry: 7
       Data: 17|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
+<<<<<<< HEAD
       Data: UnityEngine.RaycastHit, UnityEngine.PhysicsModule
+=======
+      Data: System.Single, mscorlib
+>>>>>>> upstream/main
     - Name: 
       Entry: 8
       Data: 
@@ -278,12 +318,79 @@ MonoBehaviour:
       Data: 
     - Name: <IsSerialized>k__BackingField
       Entry: 5
+<<<<<<< HEAD
       Data: false
+=======
+      Data: true
+>>>>>>> upstream/main
     - Name: _fieldAttributes
       Entry: 7
       Data: 18|System.Collections.Generic.List`1[[System.Attribute, mscorlib]], mscorlib
     - Name: 
       Entry: 12
+<<<<<<< HEAD
+=======
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 19|UnityEngine.SerializeField, UnityEngine.CoreModule
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: raycastHit
+    - Name: $v
+      Entry: 7
+      Data: 20|UdonSharp.Compiler.FieldDefinition, UdonSharp.Editor
+    - Name: <Name>k__BackingField
+      Entry: 1
+      Data: raycastHit
+    - Name: <UserType>k__BackingField
+      Entry: 7
+      Data: 21|System.RuntimeType, mscorlib
+    - Name: 
+      Entry: 1
+      Data: UnityEngine.RaycastHit, UnityEngine.PhysicsModule
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: <SystemType>k__BackingField
+      Entry: 9
+      Data: 21
+    - Name: <SyncMode>k__BackingField
+      Entry: 7
+      Data: System.Nullable`1[[UdonSharp.UdonSyncMode, UdonSharp.Runtime]], mscorlib
+    - Name: 
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: <IsSerialized>k__BackingField
+      Entry: 5
+      Data: false
+    - Name: _fieldAttributes
+      Entry: 7
+      Data: 22|System.Collections.Generic.List`1[[System.Attribute, mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+>>>>>>> upstream/main
       Data: 0
     - Name: 
       Entry: 13
@@ -305,13 +412,21 @@ MonoBehaviour:
       Data: ray
     - Name: $v
       Entry: 7
+<<<<<<< HEAD
       Data: 19|UdonSharp.Compiler.FieldDefinition, UdonSharp.Editor
+=======
+      Data: 23|UdonSharp.Compiler.FieldDefinition, UdonSharp.Editor
+>>>>>>> upstream/main
     - Name: <Name>k__BackingField
       Entry: 1
       Data: ray
     - Name: <UserType>k__BackingField
       Entry: 7
+<<<<<<< HEAD
       Data: 20|System.RuntimeType, mscorlib
+=======
+      Data: 24|System.RuntimeType, mscorlib
+>>>>>>> upstream/main
     - Name: 
       Entry: 1
       Data: UnityEngine.Ray, UnityEngine.CoreModule
@@ -320,7 +435,11 @@ MonoBehaviour:
       Data: 
     - Name: <SystemType>k__BackingField
       Entry: 9
+<<<<<<< HEAD
       Data: 20
+=======
+      Data: 24
+>>>>>>> upstream/main
     - Name: <SyncMode>k__BackingField
       Entry: 7
       Data: System.Nullable`1[[UdonSharp.UdonSyncMode, UdonSharp.Runtime]], mscorlib
@@ -335,7 +454,11 @@ MonoBehaviour:
       Data: false
     - Name: _fieldAttributes
       Entry: 7
+<<<<<<< HEAD
       Data: 21|System.Collections.Generic.List`1[[System.Attribute, mscorlib]], mscorlib
+=======
+      Data: 25|System.Collections.Generic.List`1[[System.Attribute, mscorlib]], mscorlib
+>>>>>>> upstream/main
     - Name: 
       Entry: 12
       Data: 0
@@ -359,7 +482,11 @@ MonoBehaviour:
       Data: lastFrameStringChanged
     - Name: $v
       Entry: 7
+<<<<<<< HEAD
       Data: 22|UdonSharp.Compiler.FieldDefinition, UdonSharp.Editor
+=======
+      Data: 26|UdonSharp.Compiler.FieldDefinition, UdonSharp.Editor
+>>>>>>> upstream/main
     - Name: <Name>k__BackingField
       Entry: 1
       Data: lastFrameStringChanged
@@ -383,7 +510,11 @@ MonoBehaviour:
       Data: false
     - Name: _fieldAttributes
       Entry: 7
+<<<<<<< HEAD
       Data: 23|System.Collections.Generic.List`1[[System.Attribute, mscorlib]], mscorlib
+=======
+      Data: 27|System.Collections.Generic.List`1[[System.Attribute, mscorlib]], mscorlib
+>>>>>>> upstream/main
     - Name: 
       Entry: 12
       Data: 0
@@ -407,6 +538,7 @@ MonoBehaviour:
       Data: layerMask
     - Name: $v
       Entry: 7
+<<<<<<< HEAD
       Data: 24|UdonSharp.Compiler.FieldDefinition, UdonSharp.Editor
     - Name: <Name>k__BackingField
       Entry: 1
@@ -471,12 +603,22 @@ MonoBehaviour:
     - Name: <Name>k__BackingField
       Entry: 1
       Data: ui
+=======
+      Data: 28|UdonSharp.Compiler.FieldDefinition, UdonSharp.Editor
+    - Name: <Name>k__BackingField
+      Entry: 1
+      Data: layerMask
+>>>>>>> upstream/main
     - Name: <UserType>k__BackingField
       Entry: 7
       Data: 29|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
+<<<<<<< HEAD
       Data: TMPro.TextMeshProUGUI, Unity.TextMeshPro
+=======
+      Data: UnityEngine.LayerMask, UnityEngine.CoreModule
+>>>>>>> upstream/main
     - Name: 
       Entry: 8
       Data: 
@@ -524,19 +666,31 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 1
+<<<<<<< HEAD
       Data: rayOnObject
+=======
+      Data: ui
+>>>>>>> upstream/main
     - Name: $v
       Entry: 7
       Data: 32|UdonSharp.Compiler.FieldDefinition, UdonSharp.Editor
     - Name: <Name>k__BackingField
       Entry: 1
+<<<<<<< HEAD
       Data: rayOnObject
+=======
+      Data: ui
+>>>>>>> upstream/main
     - Name: <UserType>k__BackingField
       Entry: 7
       Data: 33|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
+<<<<<<< HEAD
       Data: UnityEngine.GameObject, UnityEngine.CoreModule
+=======
+      Data: TMPro.TextMeshProUGUI, Unity.TextMeshPro
+>>>>>>> upstream/main
     - Name: 
       Entry: 8
       Data: 
@@ -580,6 +734,69 @@ MonoBehaviour:
       Entry: 8
       Data: 
     - Name: 
+<<<<<<< HEAD
+=======
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: rayOnObject
+    - Name: $v
+      Entry: 7
+      Data: 36|UdonSharp.Compiler.FieldDefinition, UdonSharp.Editor
+    - Name: <Name>k__BackingField
+      Entry: 1
+      Data: rayOnObject
+    - Name: <UserType>k__BackingField
+      Entry: 7
+      Data: 37|System.RuntimeType, mscorlib
+    - Name: 
+      Entry: 1
+      Data: UnityEngine.GameObject, UnityEngine.CoreModule
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: <SystemType>k__BackingField
+      Entry: 9
+      Data: 37
+    - Name: <SyncMode>k__BackingField
+      Entry: 7
+      Data: System.Nullable`1[[UdonSharp.UdonSyncMode, UdonSharp.Runtime]], mscorlib
+    - Name: 
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: <IsSerialized>k__BackingField
+      Entry: 5
+      Data: true
+    - Name: _fieldAttributes
+      Entry: 7
+      Data: 38|System.Collections.Generic.List`1[[System.Attribute, mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 39|UnityEngine.SerializeField, UnityEngine.CoreModule
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+>>>>>>> upstream/main
       Entry: 13
       Data: 
     - Name: 

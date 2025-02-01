@@ -9,8 +9,13 @@ namespace WRC.Woodon
 	public class MSeat : MTarget
 	{
 		[Header("_" + nameof(MSeat))]
+<<<<<<< HEAD
 		[SerializeField] protected MData mData;
 		protected DataDictionary DataDict => mData.DataDictionary;
+=======
+		[SerializeField] protected WJson wJson;
+		protected DataDictionary DataDict => wJson.DataDictionary;
+>>>>>>> upstream/main
 
 		public int IntData
 		{
@@ -37,8 +42,13 @@ namespace WRC.Woodon
 			foreach (UIMSeat ui in uis)
 				ui.Init(contentManager, this);
 
+<<<<<<< HEAD
 			if (mData != null)
 				mData.RegisterListener(this, nameof(OnDataDeserialization), MDataEvent.OnDeserialization);
+=======
+			if (wJson != null)
+				wJson.RegisterListener(this, nameof(OnDataDeserialization), WJsonEvent.OnDeserialization);
+>>>>>>> upstream/main
 
 			if (Networking.IsMaster)
 			{
@@ -53,7 +63,11 @@ namespace WRC.Woodon
 		{
 			MDebugLog($"{nameof(OnDataDeserialization)}");
 
+<<<<<<< HEAD
 			DataDictionary change = mData.ChangedData;
+=======
+			DataDictionary change = wJson.ChangedData;
+>>>>>>> upstream/main
 			DataList keys = change.GetKeys();
 			for (int i = 0; i < keys.Count; i++)
 			{
@@ -76,7 +90,11 @@ namespace WRC.Woodon
 
 		public void SerializeData()
 		{
+<<<<<<< HEAD
 			mData.SerializeData();
+=======
+			wJson.SerializeData();
+>>>>>>> upstream/main
 		}
 
 		public void UpdateSeat()
@@ -120,11 +138,21 @@ namespace WRC.Woodon
 
 			// UpdateCurDataUI();
 
+<<<<<<< HEAD
 			if (DataChangeStateUtil.IsDataChanged(changeState))
 			{
 				if (contentManager != null)
 					contentManager.UpdateContent();
 			}
+=======
+			// 직접 구현하도록
+			
+			// if (DataChangeStateUtil.IsDataChanged(changeState))
+			// {
+			// 	if (contentManager != null)
+			// 		contentManager.UpdateContent();
+			// }
+>>>>>>> upstream/main
 		}
 
 		protected virtual void OnTurnDataChange(DataChangeState changeState)
@@ -133,8 +161,15 @@ namespace WRC.Woodon
 
 			// UpdateCurTurnDataUI();
 
+<<<<<<< HEAD
 			if (DataChangeStateUtil.IsDataChanged(changeState))
 				contentManager.UpdateContent();
+=======
+			// 직접 구현하도록
+			
+			// if (DataChangeStateUtil.IsDataChanged(changeState))
+			// 	contentManager.UpdateContent();
+>>>>>>> upstream/main
 		}
 
 		public virtual void UseSeat()

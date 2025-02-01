@@ -82,7 +82,11 @@ namespace WRC.Woodon
 
 		public void UpdatePlayerIDBuffer()
 		{
+<<<<<<< HEAD
 			VRCPlayerApi[] players = MUtil.GetPlayers();
+=======
+			VRCPlayerApi[] players = WUtil.GetPlayers();
+>>>>>>> upstream/main
 
 			if (players.Length != VRCPlayerApi.GetPlayerCount())
 			{

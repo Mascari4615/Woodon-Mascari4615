@@ -9,6 +9,10 @@ namespace WRC.Woodon
 	public class RayInfo : MBase
 	{
 		[Header("_" + nameof(RayInfo))]
+<<<<<<< HEAD
+=======
+		[SerializeField] private HumanBodyBones bone = HumanBodyBones.Head;
+>>>>>>> upstream/main
 		[SerializeField] private Transform rayObject;
 		[SerializeField] private float distance;
 		private RaycastHit raycastHit;
@@ -33,8 +37,8 @@ namespace WRC.Woodon
 			}
 			else
 			{
-				ray.origin = Networking.LocalPlayer.GetBonePosition(HumanBodyBones.Head);
-				ray.direction = Networking.LocalPlayer.GetBoneRotation(HumanBodyBones.Head) * Vector3.forward;
+				ray.origin = Networking.LocalPlayer.GetBonePosition(bone);
+				ray.direction = Networking.LocalPlayer.GetBoneRotation(bone) * Vector3.forward;
 				Debug.DrawRay(ray.origin, ray.direction * distance, Color.red);
 			}
 

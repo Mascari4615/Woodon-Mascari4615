@@ -617,19 +617,31 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 1
+<<<<<<< HEAD
       Data: mData
+=======
+      Data: wJson
+>>>>>>> upstream/main
     - Name: $v
       Entry: 7
       Data: 40|UdonSharp.Compiler.FieldDefinition, UdonSharp.Editor
     - Name: <Name>k__BackingField
       Entry: 1
+<<<<<<< HEAD
       Data: mData
+=======
+      Data: wJson
+>>>>>>> upstream/main
     - Name: <UserType>k__BackingField
       Entry: 7
       Data: 41|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
+<<<<<<< HEAD
       Data: WRC.Woodon.MData, Woodon
+=======
+      Data: WRC.Woodon.WJson, Woodon
+>>>>>>> upstream/main
     - Name: 
       Entry: 8
       Data: 

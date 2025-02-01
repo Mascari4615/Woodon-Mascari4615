@@ -1,7 +1,11 @@
 ﻿using UdonSharp;
 using UnityEngine;
 using VRC.SDKBase;
+<<<<<<< HEAD
 using static WRC.Woodon.MUtil;
+=======
+using static WRC.Woodon.WUtil;
+>>>>>>> upstream/main
 
 namespace WRC.Woodon
 {
@@ -12,20 +16,36 @@ namespace WRC.Woodon
 		[SerializeField] private MTarget[] ignoreTargets;
 
 		[SerializeField] private bool useIngnoreTargetTag;
+<<<<<<< HEAD
 		[SerializeField] private VoiceAreaTag IgnoreTargetTag;
 
 		[SerializeField] private bool useTargetTag;
 		[SerializeField] private VoiceAreaTag targetTag;
 
 		public override void UpdateVoice()
+=======
+		[SerializeField] private VoiceTag IgnoreTargetTag;
+
+		[SerializeField] private bool useTargetTag;
+		[SerializeField] private VoiceTag targetTag;
+
+		public override void UpdateVoice(VRCPlayerApi[] playerApis, VoiceState[] voiceStates)
+>>>>>>> upstream/main
 		{
 			if (IsNotOnline())
 				return;
 
+<<<<<<< HEAD
 			if (voiceManager.PlayerApis == null)
 				return;
 
 			if (enable != null && (enable.Value == false))
+=======
+			if (playerApis == null)
+				return;
+
+			if (Enable == false)
+>>>>>>> upstream/main
 				return;
 
 			// 무시 MTarget 대상이라면 return
@@ -56,8 +76,13 @@ namespace WRC.Woodon
 			}
 
 			// 보이스 상태 초기화
+<<<<<<< HEAD
 			for (int i = 0; i < voiceManager.PlayerApis.Length; i++)
 				voiceManager.VoiceStates[i] = VoiceState.Default;
+=======
+			for (int i = 0; i < playerApis.Length; i++)
+				voiceStates[i] = VoiceState.Default;
+>>>>>>> upstream/main
 		}
 	}
 }

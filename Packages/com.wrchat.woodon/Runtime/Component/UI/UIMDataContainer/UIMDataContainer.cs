@@ -8,8 +8,13 @@ namespace WRC.Woodon
 	[UdonBehaviourSyncMode(BehaviourSyncMode.Manual)]
 	public class UIMDataContainer : MBase
 	{
+<<<<<<< HEAD
 		[Header("_" + nameof(UIMDataContainer))]
 		[SerializeField] protected MDataContainer targetMDataContainer;
+=======
+		[field: Header("_" + nameof(UIMDataContainer))]
+		[field: SerializeField] public MDataContainer TargetMDataContainer { get; protected set; }
+>>>>>>> upstream/main
 
 		[SerializeField] protected TextMeshProUGUI[] nameTexts;
 		[SerializeField] protected TextMeshProUGUI[] valueTexts;
@@ -55,15 +60,27 @@ namespace WRC.Woodon
 			if (mDataContainerIndex == null)
 				return;
 
+<<<<<<< HEAD
 			if (mDataContainerIndex.Value < 0 || mDataContainerIndex.Value >= mDataContainers.Length)
 				return;
+=======
+			if ((mDataContainerIndex.Value < 0) || (mDataContainerIndex.Value >= mDataContainers.Length))
+			{
+				UpdateUI(null);
+				return;
+			}
+>>>>>>> upstream/main
 
 			UpdateUI(mDataContainers[mDataContainerIndex.Value]);
 		}
 
 		public virtual void UpdateUI(MDataContainer mDataContainer)
 		{
+<<<<<<< HEAD
 			this.targetMDataContainer = mDataContainer;
+=======
+			this.TargetMDataContainer = mDataContainer;
+>>>>>>> upstream/main
 
 			MDebugLog($"{nameof(UpdateUI)}");
 
