@@ -656,11 +656,7 @@ MonoBehaviour:
       Data: 40|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
-<<<<<<< HEAD
-      Data: UnityEngine.BoxCollider[], UnityEngine.PhysicsModule
-=======
       Data: UnityEngine.Collider[], UnityEngine.PhysicsModule
->>>>>>> upstream/main
     - Name: 
       Entry: 8
       Data: 

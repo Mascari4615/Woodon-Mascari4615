@@ -9,10 +9,7 @@ namespace WRC.Woodon
 	public class RayInfo : MBase
 	{
 		[Header("_" + nameof(RayInfo))]
-<<<<<<< HEAD
-=======
 		[SerializeField] private HumanBodyBones bone = HumanBodyBones.Head;
->>>>>>> upstream/main
 		[SerializeField] private Transform rayObject;
 		[SerializeField] private float distance;
 		private RaycastHit raycastHit;

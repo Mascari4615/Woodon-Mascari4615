@@ -1,173 +1,170 @@
 ﻿using UdonSharp;
 using UnityEngine;
-<<<<<<< HEAD
-using static WRC.Woodon.MUtil;
-=======
 using static WRC.Woodon.WUtil;
->>>>>>> upstream/main
 
 namespace WRC.Woodon
 {
-	[UdonBehaviourSyncMode(BehaviourSyncMode.Manual)]
-	public class QuizManager : ContentManager
-	{
-		[Header("_" + nameof(QuizManager))]
-		[SerializeField] protected int playerCount = 10;
-		[SerializeField] protected MValue curQuizIndex;
-		[SerializeField] private GameObject[] waitTimeObjects;
-		[SerializeField] private Transform wrongPos;
-		[SerializeField] private Transform[] quizDataParents;
-		[SerializeField] protected MValue quizDataParentsIndex;
-		[SerializeField] private MString seatIndexInputField;
+    [DefaultExecutionOrder(-10000)]
+    [UdonBehaviourSyncMode(BehaviourSyncMode.Manual)]
+    public class QuizManager : ContentManager
+    {
+        [Header("_" + nameof(QuizManager))]
+        [SerializeField] protected int playerCount = 10;
+        [SerializeField] protected MValue curQuizIndex;
+        [SerializeField] private GameObject[] waitTimeObjects;
+        [SerializeField] private Transform wrongPos;
+        [SerializeField] private Transform[] quizDataParents;
+        [SerializeField] protected MValue quizDataParentsIndex;
+        [SerializeField] private MString seatIndexInputField;
 
-		[field: Header("_" + nameof(QuizManager) + "_GameRule")]
-		[field: SerializeField] public bool GameRule_ADD_SCORE_WHEN_CORRECT_ANSWER { get; private set; } = false;
-		[field: SerializeField] public bool GameRule_SUB_SCORE_WHEN_WRONG_ANSWER { get; private set; } = false;
-		[field: SerializeField] public bool GameRule_DROP_PLAYER_WHEN_WRONG_ANSWER { get; private set; } = false;
-		[field: SerializeField] public bool GameRule_DROP_PLAYER_WHEN_ZERO_SCORE { get; private set; } = false;
+        [field: Header("_" + nameof(QuizManager) + "_GameRule")]
+        [field: SerializeField] public bool GameRule_ADD_SCORE_WHEN_CORRECT_ANSWER { get; private set; } = false;
+        [field: SerializeField] public bool GameRule_SUB_SCORE_WHEN_WRONG_ANSWER { get; private set; } = false;
+        [field: SerializeField] public bool GameRule_DROP_PLAYER_WHEN_WRONG_ANSWER { get; private set; } = false;
+        [field: SerializeField] public bool GameRule_DROP_PLAYER_WHEN_ZERO_SCORE { get; private set; } = false;
 
-		protected int[] answerCount = new int[10];
+        protected int[] answerCount = new int[10];
 
-		public QuizData[] QuizDatas { get; private set; }
+        public QuizData[] QuizDatas { get; private set; }
 
-		public int CurQuizIndex => curQuizIndex.Value;
+        public int CurQuizIndex => curQuizIndex.Value;
 
-		public QuizData CurQuizData => QuizDatas[CurQuizIndex];
-		public bool CanSelectAnswer { get; protected set; } = true;
+        public QuizData CurQuizData => QuizDatas[CurQuizIndex];
+        public bool CanSelectAnswer { get; protected set; } = true;
 
-		protected override void Start()
-		{
-			base.Start();
-			UpdateContent();
-		}
+        protected override void Start()
+        {
+            base.Start();
+            UpdateContent();
+        }
 
-		protected override void Init()
-		{
-			QuizDatas = quizDataParents[0].GetComponentsInChildren<QuizData>();
+        protected override void Init()
+        {
+            QuizDatas = quizDataParents[0].GetComponentsInChildren<QuizData>();
 
-			base.Init();
+            base.Init();
 
-			curQuizIndex.RegisterListener(this, nameof(OnQuizIndexChange));
-			quizDataParentsIndex.RegisterListener(this, nameof(OnQuizDataParentChange));
+            curQuizIndex.RegisterListener(this, nameof(OnQuizIndexChange));
+            quizDataParentsIndex.RegisterListener(this, nameof(OnQuizDataParentChange));
 
-			curQuizIndex.SetMinMaxValue(0, QuizDatas.Length - 1);
-			quizDataParentsIndex.SetMinMaxValue(0, quizDataParents.Length - 1);
+            curQuizIndex.SetMinMaxValue(0, QuizDatas.Length - 1);
+            quizDataParentsIndex.SetMinMaxValue(0, quizDataParents.Length - 1);
 
-			OnQuizIndexChange();
-			OnQuizDataParentChange();
-		}
+            OnQuizIndexChange();
+            OnQuizDataParentChange();
+        }
 
-		public override void UpdateContent()
-		{
-			CalcAnswerCount();
-			SetWaitObjectActive(IsCurGameState((int)QuizGameState.Wait));
-		
-			base.UpdateContent();
-		}
+        public override void UpdateContent()
+        {
+            CalcAnswerCount();
+            SetWaitObjectActive(IsContentState((int)QuizGameState.Wait));
 
-		private void CalcAnswerCount()
-		{
-			answerCount = new int[(int)QuizAnswerType.None + 1];
-			foreach (QuizSeat quizSeat in MSeats)
-			{
-				if ((int)quizSeat.ExpectedAnswer < 0 || (int)quizSeat.ExpectedAnswer >= answerCount.Length)
-					continue;
+            base.UpdateContent();
+        }
 
-				answerCount[(int)quizSeat.ExpectedAnswer]++;
-			}
-		}
+        private void CalcAnswerCount()
+        {
+            answerCount = new int[(int)QuizAnswerType.None + 1];
+            foreach (QuizSeat quizSeat in MSeats)
+            {
+                if ((int)quizSeat.ExpectedAnswer < 0 || (int)quizSeat.ExpectedAnswer >= answerCount.Length)
+                    continue;
 
-		private void SetWaitObjectActive(bool active)
-		{
-			foreach (GameObject waitTimeObject in waitTimeObjects)
-				waitTimeObject.SetActive(active);
-		}
+                answerCount[(int)quizSeat.ExpectedAnswer]++;
+            }
+        }
 
-		protected override void OnGameStateChange(DataChangeState changeState)
-		{
-			if (changeState != DataChangeState.Less)
-			{
-				if (CurGameState == (int)QuizGameState.Wait) OnWait();
-				else if (CurGameState == (int)QuizGameState.ShowQuiz) OnQuizTime();
-				else if (CurGameState == (int)QuizGameState.SelectAnswer) OnSelectAnswer();
-				else if (CurGameState == (int)QuizGameState.ShowPlayerAnswer) OnShowPlayerAnswer();
-				else if (CurGameState == (int)QuizGameState.CheckAnswer) OnCheckAnswer();
-				else if (CurGameState == (int)QuizGameState.Explaining) OnExplaining();
-				else if (CurGameState == (int)QuizGameState.Scoring) OnScoring();
-			}
+        private void SetWaitObjectActive(bool active)
+        {
+            foreach (GameObject waitTimeObject in waitTimeObjects)
+                waitTimeObject.SetActive(active);
+        }
 
-			base.OnGameStateChange(changeState);
-		}
+        protected override void OnContentStateChange(DataChangeState changeState)
+        {
+            if (changeState != DataChangeState.Less)
+            {
+                if (ContentState == (int)QuizGameState.Wait) OnWait();
+                else if (ContentState == (int)QuizGameState.ShowQuiz) OnQuizTime();
+                else if (ContentState == (int)QuizGameState.SelectAnswer) OnSelectAnswer();
+                else if (ContentState == (int)QuizGameState.ShowPlayerAnswer) OnShowPlayerAnswer();
+                else if (ContentState == (int)QuizGameState.CheckAnswer) OnCheckAnswer();
+                else if (ContentState == (int)QuizGameState.Explaining) OnExplaining();
+                else if (ContentState == (int)QuizGameState.Scoring) OnScoring();
+            }
 
-		public virtual void OnQuizIndexChange()
-		{
-			UpdateContent();
-			SendEvents();
-		}
+            base.OnContentStateChange(changeState);
+        }
 
-		public virtual void OnQuizDataParentChange()
-		{
-			QuizDatas = quizDataParents[quizDataParentsIndex.Value].GetComponentsInChildren<QuizData>();
-			curQuizIndex.SetMinMaxValue(0, QuizDatas.Length - 1);
-			curQuizIndex.SetValue(0);
-		}
+        public virtual void OnQuizIndexChange()
+        {
+            UpdateContent();
+            SendEvents();
+        }
 
-		public void TeleportToSeat()
-		{
-			if (!IsDigit(seatIndexInputField.Value))
-				return;
+        public virtual void OnQuizDataParentChange()
+        {
+            QuizDatas = quizDataParents[quizDataParentsIndex.Value].GetComponentsInChildren<QuizData>();
+            curQuizIndex.SetMinMaxValue(0, QuizDatas.Length - 1);
+            curQuizIndex.SetValue(0);
+        }
 
-			int seatIndex = int.Parse(seatIndexInputField.Value);
+        public void TeleportToSeat()
+        {
+            if (!IsDigit(seatIndexInputField.Value))
+                return;
 
-			if (0 < seatIndex && seatIndex <= playerCount)
-				TP(MSeats[seatIndex - 1].transform);
-		}
+            int seatIndex = int.Parse(seatIndexInputField.Value);
 
-		public void TP_WrongPos()
-		{
-			if (wrongPos)
-				TP(wrongPos);
-		}
+            if (0 < seatIndex && seatIndex <= playerCount)
+                TP(MSeats[seatIndex - 1].transform);
+        }
 
-		public virtual void OnWait()
-		{
-			MDebugLog($"{nameof(OnWait)}");
+        public void TP_WrongPos()
+        {
+            if (wrongPos)
+                TP(wrongPos);
+        }
 
-			if (IsOwner() == false)
-				return;
+        public virtual void OnWait()
+        {
+            MDebugLog($"{nameof(OnWait)}");
 
-			foreach (MSeat turnSeat in MSeats)
-				turnSeat.ResetData();
-		}
+            if (IsOwner() == false)
+                return;
 
-		public virtual void OnQuizTime()
-		{
-			MDebugLog($"{nameof(OnQuizTime)}");
-		}
+            foreach (MSeat turnSeat in MSeats)
+                turnSeat.ResetData();
+        }
 
-		public virtual void OnSelectAnswer()
-		{
-			MDebugLog($"{nameof(OnSelectAnswer)}");
-		}
+        public virtual void OnQuizTime()
+        {
+            MDebugLog($"{nameof(OnQuizTime)}");
+        }
 
-		public virtual void OnShowPlayerAnswer()
-		{
-			MDebugLog($"{nameof(OnShowPlayerAnswer)}");
-		}
+        public virtual void OnSelectAnswer()
+        {
+            MDebugLog($"{nameof(OnSelectAnswer)}");
+        }
 
-		public virtual void OnCheckAnswer()
-		{
-			MDebugLog($"{nameof(OnCheckAnswer)}");
-		}
+        public virtual void OnShowPlayerAnswer()
+        {
+            MDebugLog($"{nameof(OnShowPlayerAnswer)}");
+        }
 
-		public virtual void OnExplaining()
-		{
-			MDebugLog($"{nameof(OnExplaining)}");
-		}
+        public virtual void OnCheckAnswer()
+        {
+            MDebugLog($"{nameof(OnCheckAnswer)}");
+        }
 
-		public virtual void OnScoring()
-		{
-			MDebugLog($"{nameof(OnScoring)}");
-		}
-	}
+        public virtual void OnExplaining()
+        {
+            MDebugLog($"{nameof(OnExplaining)}");
+        }
+
+        public virtual void OnScoring()
+        {
+            MDebugLog($"{nameof(OnScoring)}");
+        }
+    }
 }

@@ -67,23 +67,15 @@ namespace WRC.Woodon
 			eventBlock.Add("callback", callback);
 
 			// 중복 등록 처리
-<<<<<<< HEAD
-			if (eventBlocks.Contains(eventBlock))
-			{
-				MDebugLog($"{nameof(RegisterListener)} : {nameof(listener)}.{nameof(callback)} is already registered", LogType.Warning);
-=======
 			if (AlreadyContainsEvent(eventBlocks, eventBlock))
 			{
 				MDebugLog($"{nameof(RegisterListener)} : {listener}.{callback} is already registered", LogType.Warning);
->>>>>>> upstream/main
 				return;
 			}
 
 			eventBlocks.Add(eventBlock);
 		}
 
-<<<<<<< HEAD
-=======
 		private bool AlreadyContainsEvent(DataList eventBlocks, DataDictionary eventBlock)
 		{
 			for (int i = 0; i < eventBlocks.Count; i++)
@@ -96,7 +88,6 @@ namespace WRC.Woodon
 			return false;
 		}
 
->>>>>>> upstream/main
 		public void UnregisterListener(UdonSharpBehaviour listener, string callback, Enum eventType = null)
 		{
 			MDebugLog($"{nameof(UnregisterListener)}({listener}, {callback}, {eventType})");
@@ -147,11 +138,7 @@ namespace WRC.Woodon
 					UdonSharpBehaviour listener = (UdonSharpBehaviour)eventBlock["listener"].Reference;
 					string callback = eventBlock["callback"].String;
 
-<<<<<<< HEAD
-					MDebugLog($"[{key}] {listener}.{callback}");
-=======
 					MDebugLog($"[{key}].{j} : {listener}.{callback}");
->>>>>>> upstream/main
 				}
 			}
 		}

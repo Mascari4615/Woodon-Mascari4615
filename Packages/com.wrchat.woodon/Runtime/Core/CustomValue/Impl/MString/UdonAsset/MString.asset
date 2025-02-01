@@ -419,21 +419,13 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 1
-<<<<<<< HEAD
-      Data: defaultString
-=======
       Data: <DefaultString>k__BackingField
->>>>>>> upstream/main
     - Name: $v
       Entry: 7
       Data: 26|UdonSharp.Compiler.FieldDefinition, UdonSharp.Editor
     - Name: <Name>k__BackingField
       Entry: 1
-<<<<<<< HEAD
-      Data: defaultString
-=======
       Data: <DefaultString>k__BackingField
->>>>>>> upstream/main
     - Name: <UserType>k__BackingField
       Entry: 7
       Data: 27|System.RuntimeType, mscorlib
@@ -463,11 +455,7 @@ MonoBehaviour:
       Data: 28|System.Collections.Generic.List`1[[System.Attribute, mscorlib]], mscorlib
     - Name: 
       Entry: 12
-<<<<<<< HEAD
-      Data: 4
-=======
       Data: 3
->>>>>>> upstream/main
     - Name: 
       Entry: 7
       Data: 29|UnityEngine.HeaderAttribute, UnityEngine.CoreModule
@@ -479,30 +467,13 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-<<<<<<< HEAD
-      Data: 30|UnityEngine.HeaderAttribute, UnityEngine.CoreModule
-    - Name: header
-      Entry: 1
-      Data: _MString - Options
-=======
       Data: 30|UnityEngine.SerializeField, UnityEngine.CoreModule
->>>>>>> upstream/main
     - Name: 
       Entry: 8
       Data: 
     - Name: 
       Entry: 7
-<<<<<<< HEAD
-      Data: 31|UnityEngine.SerializeField, UnityEngine.CoreModule
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 32|UnityEngine.TextAreaAttribute, UnityEngine.CoreModule
-=======
       Data: 31|UnityEngine.TextAreaAttribute, UnityEngine.CoreModule
->>>>>>> upstream/main
     - Name: minLines
       Entry: 3
       Data: 3
@@ -532,11 +503,7 @@ MonoBehaviour:
       Data: useDefaultWhenEmpty
     - Name: $v
       Entry: 7
-<<<<<<< HEAD
-      Data: 33|UdonSharp.Compiler.FieldDefinition, UdonSharp.Editor
-=======
       Data: 32|UdonSharp.Compiler.FieldDefinition, UdonSharp.Editor
->>>>>>> upstream/main
     - Name: <Name>k__BackingField
       Entry: 1
       Data: useDefaultWhenEmpty
@@ -560,12 +527,6 @@ MonoBehaviour:
       Data: true
     - Name: _fieldAttributes
       Entry: 7
-<<<<<<< HEAD
-      Data: 34|System.Collections.Generic.List`1[[System.Attribute, mscorlib]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 1
-=======
       Data: 33|System.Collections.Generic.List`1[[System.Attribute, mscorlib]], mscorlib
     - Name: 
       Entry: 12
@@ -579,7 +540,6 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
->>>>>>> upstream/main
     - Name: 
       Entry: 7
       Data: 35|UnityEngine.SerializeField, UnityEngine.CoreModule

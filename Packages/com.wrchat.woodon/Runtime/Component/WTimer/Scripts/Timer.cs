@@ -46,11 +46,7 @@ namespace WRC.Woodon
 				mValueForSetTime.RegisterListener(this, nameof(SetTimerByMValue));
 				SetTimerByMValue();
 			}
-<<<<<<< HEAD
-	
-=======
 
->>>>>>> upstream/main
 			SendEvents();
 			SendEvents(TimerEvent.ExpireTimeChanged);
 		}
@@ -96,10 +92,7 @@ namespace WRC.Woodon
 			RequestSerialization();
 		}
 
-<<<<<<< HEAD
-=======
 		public void StopTimer() => ResetTimer();
->>>>>>> upstream/main
 		public void ResetTimer()
 		{
 			MDebugLog(nameof(ResetTimer));

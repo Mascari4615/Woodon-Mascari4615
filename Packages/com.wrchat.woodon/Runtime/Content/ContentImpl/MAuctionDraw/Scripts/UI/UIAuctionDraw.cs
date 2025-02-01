@@ -5,139 +5,135 @@ using UnityEngine.UI;
 
 namespace WRC.Woodon
 {
-	[UdonBehaviourSyncMode(BehaviourSyncMode.None)]
-	public class UIAuctionDraw : MBase
-	{
-		[SerializeField] private Image[] teamLeaderImages;
-		[SerializeField] private TextMeshProUGUI[] teamLeaderNameTexts;
+    [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
+    public class UIAuctionDraw : MBase
+    {
+        [SerializeField] private Image[] teamLeaderImages;
+        [SerializeField] private TextMeshProUGUI[] teamLeaderNameTexts;
 
-		[SerializeField] private Image[] targetImages;
-		[SerializeField] private TextMeshProUGUI[] targetNameTexts;
+        [SerializeField] private Image[] targetImages;
+        [SerializeField] private TextMeshProUGUI[] targetNameTexts;
 
-		[SerializeField] private TextMeshProUGUI[] stringDataTexts;
-		[SerializeField] private TextMeshProUGUI[] maxPointTexts;
-		[SerializeField] private TextMeshProUGUI[] resultTexts;
+        [SerializeField] private TextMeshProUGUI[] stringDataTexts;
+        [SerializeField] private TextMeshProUGUI[] maxPointTexts;
+        [SerializeField] private TextMeshProUGUI[] resultTexts;
 
-		[SerializeField] private Image[] spinImages;
+        [SerializeField] private Image[] spinImages;
 
-		[SerializeField] private UIAuctionDrawTargetPanel[] targetPanels;
+        [SerializeField] private UIAuctionDrawTargetPanel[] targetPanels;
 
-		[SerializeField] private MAnimator[] mAnimators;
+        [SerializeField] private MAnimator[] mAnimators;
 
-		private AuctionDraw auctionDraw;
+        private AuctionDraw auctionDraw;
 
-		public void Init(AuctionDraw auctionDraw)
-		{
-			this.auctionDraw = auctionDraw;
+        public void Init(AuctionDraw auctionDraw)
+        {
+            this.auctionDraw = auctionDraw;
 
-			foreach (UIAuctionDrawTargetPanel targetPanel in targetPanels)
-				targetPanel.Init(auctionDraw);
-		}
+            foreach (UIAuctionDrawTargetPanel targetPanel in targetPanels)
+                targetPanel.Init(auctionDraw);
+        }
 
-		public void UpdateUI()
-		{
-			MDebugLog($"{nameof(UpdateUI)}");
+        public void UpdateUI()
+        {
+            MDebugLog($"{nameof(UpdateUI)}");
 
-			foreach (UIAuctionDrawTargetPanel targetPanel in targetPanels)
-				targetPanel.UpdateUI();
+            foreach (UIAuctionDrawTargetPanel targetPanel in targetPanels)
+                targetPanel.UpdateUI();
 
-			foreach (MAnimator mAnimator in mAnimators)
-				mAnimator.SetTrigger(auctionDraw.AuctionManager.CurGameState.ToString());
+            foreach (MAnimator mAnimator in mAnimators)
+                mAnimator.SetTrigger(auctionDraw.AuctionManager.ContentState.ToString());
 
-			if (auctionDraw.TargetIndex == NONE_INT)
-			{
-				MDebugLog($"{nameof(UpdateUI)}, TargetIndex is NONE_INT");
-				return;
-			}
+            if (auctionDraw.TargetIndex == NONE_INT)
+            {
+                MDebugLog($"{nameof(UpdateUI)}, TargetIndex is NONE_INT");
+                return;
+            }
 
-			// Spin
-			UpdateUI_Spin();
-			
-			// CurTarget
-			UpdateUI_CurTarget();
+            // Spin
+            UpdateUI_Spin();
 
-			// Result
-			UpdateUI_Result();
-		}
+            // CurTarget
+            UpdateUI_CurTarget();
 
-		public void UpdateUI_Spin()
-		{
-			DrawElementData[] drawElementDatas = auctionDraw.DrawManager.DrawElementDatas;
-			DrawElementData[] noTeamDatas = new DrawElementData[drawElementDatas.Length];
+            // Result
+            UpdateUI_Result();
+        }
 
-			int noTeamDataCount = 0;
-			for (int i = 0; i < drawElementDatas.Length; i++)
-			{
-				DrawElementData drawElementData = drawElementDatas[i];
-				if (drawElementData.InitTeamType == TeamType.None)
-				{
-					noTeamDatas[noTeamDataCount] = drawElementData;
-					noTeamDataCount++;
-				}
-			}
+        public void UpdateUI_Spin()
+        {
+            DrawElementData[] drawElementDatas = auctionDraw.DrawManager.DrawElementDatas;
+            DrawElementData[] noTeamDatas = new DrawElementData[drawElementDatas.Length];
 
-<<<<<<< HEAD
-			MDataUtil.ResizeArr(ref noTeamDatas, noTeamDataCount);
-=======
-			WUtil.Resize(ref noTeamDatas, noTeamDataCount);
->>>>>>> upstream/main
+            int noTeamDataCount = 0;
+            for (int i = 0; i < drawElementDatas.Length; i++)
+            {
+                DrawElementData drawElementData = drawElementDatas[i];
+                if (drawElementData.InitTeamType == TeamType.None)
+                {
+                    noTeamDatas[noTeamDataCount] = drawElementData;
+                    noTeamDataCount++;
+                }
+            }
 
-			for (int i = 0; i < spinImages.Length - 1; i++)
-				spinImages[i].sprite = noTeamDatas[i % noTeamDatas.Length].Sprite;
+            WUtil.Resize(ref noTeamDatas, noTeamDataCount);
 
-			AuctionSeat maxTryPointSeat = auctionDraw.AuctionManager.MaxTryPointSeat;
+            for (int i = 0; i < spinImages.Length - 1; i++)
+                spinImages[i].sprite = noTeamDatas[i % noTeamDatas.Length].Sprite;
 
-			if (maxTryPointSeat != null)
-				spinImages[spinImages.Length - 2].sprite = auctionDraw.DrawManager.DrawElementDatas[maxTryPointSeat.Index].Sprite;
-		}
+            AuctionSeat maxTryPointSeat = auctionDraw.AuctionManager.MaxTryPointSeat;
 
-		public void UpdateUI_CurTarget()
-		{
-			MDebugLog(nameof(UpdateUI_CurTarget));
+            if (maxTryPointSeat != null)
+                spinImages[spinImages.Length - 2].sprite = auctionDraw.DrawManager.DrawElementDatas[maxTryPointSeat.Index].Sprite;
+        }
 
-			DrawElementData targetData = auctionDraw.DrawManager.DrawElementDatas[auctionDraw.TargetIndex];
+        public void UpdateUI_CurTarget()
+        {
+            MDebugLog(nameof(UpdateUI_CurTarget));
 
-			foreach (Image targetImage in targetImages)
-				targetImage.sprite = targetData.Sprite;
-			foreach (TextMeshProUGUI targetNameText in targetNameTexts)
-				targetNameText.text = targetData.Name;
-			for (int i = 0; i < stringDataTexts.Length; i++)
-				stringDataTexts[i].text = targetData.StringData[i];
-		}
+            DrawElementData targetData = auctionDraw.DrawManager.DrawElementDatas[auctionDraw.TargetIndex];
 
-		public void UpdateUI_Result()
-		{
-			MDebugLog(nameof(UpdateUI_Result));
+            foreach (Image targetImage in targetImages)
+                targetImage.sprite = targetData.Sprite;
+            foreach (TextMeshProUGUI targetNameText in targetNameTexts)
+                targetNameText.text = targetData.Name;
+            for (int i = 0; i < stringDataTexts.Length; i++)
+                stringDataTexts[i].text = targetData.StringData[i];
+        }
 
-			AuctionSeat winner = auctionDraw.AuctionManager.MaxTryPointSeat;
+        public void UpdateUI_Result()
+        {
+            MDebugLog(nameof(UpdateUI_Result));
 
-			if (winner != null)
-			{
-				DrawElementData winnerData = auctionDraw.DrawManager.DrawElementDatas[winner.Index];
+            AuctionSeat winner = auctionDraw.AuctionManager.MaxTryPointSeat;
 
-				foreach (Image image in teamLeaderImages)
-				{
-					image.sprite = winnerData.Sprite;
-					image.color = Color.white;
-				}
+            if (winner != null)
+            {
+                DrawElementData winnerData = auctionDraw.DrawManager.DrawElementDatas[winner.Index];
 
-				foreach (TextMeshProUGUI text in teamLeaderNameTexts)
-					text.text = winnerData.Name;
+                foreach (Image image in teamLeaderImages)
+                {
+                    image.sprite = winnerData.Sprite;
+                    image.color = Color.white;
+                }
 
-				foreach (TextMeshProUGUI resultText in resultTexts)
-					resultText.text = $"<color=#FFC049>{winner.TryPoint}</color> 포인트로 '{winnerData.Name}' 팀에 낙찰";
-			}
-			else
-			{
-				foreach (Image image in teamLeaderImages)
-					image.color = Color.clear;
+                foreach (TextMeshProUGUI text in teamLeaderNameTexts)
+                    text.text = winnerData.Name;
 
-				foreach (TextMeshProUGUI teamLeaderNameText in teamLeaderNameTexts)
-					teamLeaderNameText.text = "-";
+                foreach (TextMeshProUGUI resultText in resultTexts)
+                    resultText.text = $"<color=#FFC049>{winner.TryPoint}</color> 포인트로 '{winnerData.Name}' 팀에 낙찰";
+            }
+            else
+            {
+                foreach (Image image in teamLeaderImages)
+                    image.color = Color.clear;
 
-				foreach (TextMeshProUGUI resultText in resultTexts)
-					resultText.text = $"유찰";
-			}
-		}
-	}
+                foreach (TextMeshProUGUI teamLeaderNameText in teamLeaderNameTexts)
+                    teamLeaderNameText.text = "-";
+
+                foreach (TextMeshProUGUI resultText in resultTexts)
+                    resultText.text = $"유찰";
+            }
+        }
+    }
 }

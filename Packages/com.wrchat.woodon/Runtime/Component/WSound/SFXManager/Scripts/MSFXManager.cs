@@ -9,10 +9,7 @@ namespace WRC.Woodon
 	{
 		[field: Header("_" + nameof(MSFXManager))]
 		[field: SerializeField] public AudioClip[] AudioClips { get; private set; }
-<<<<<<< HEAD
-=======
 		[field: SerializeField] public float[] VolumeScaleWhenPlayOneShot { get; private set; }
->>>>>>> upstream/main
 		[SerializeField] private AudioSource audioSource;
 
 		[Header("_" + nameof(MSFXManager) + " - Options")]
@@ -58,14 +55,10 @@ namespace WRC.Woodon
 			if (isInvalidIndex || isElementNull)
 				return;
 
-<<<<<<< HEAD
-			PlaySFX(AudioClips[index]);
-=======
 			if (VolumeScaleWhenPlayOneShot.Length > index)
 				PlaySFX(AudioClips[index], VolumeScaleWhenPlayOneShot[index]);
 			else
 				PlaySFX(AudioClips[index]);
->>>>>>> upstream/main
 		}
 
 		public void StopSFX_Global()
@@ -76,11 +69,7 @@ namespace WRC.Woodon
 			SendCustomNetworkEvent(NetworkEventTarget.All, nameof(StopSFX));
 		}
 
-<<<<<<< HEAD
-		public void PlaySFX(AudioClip audioClip)
-=======
 		public void PlaySFX(AudioClip audioClip, float volumeScaleWhenPlayOneShot = 1f)
->>>>>>> upstream/main
 		{
 			if (audioClip == null)
 				return;
@@ -94,11 +83,7 @@ namespace WRC.Woodon
 
 			if (playOneShot)
 			{
-<<<<<<< HEAD
-				audioSource.PlayOneShot(audioClip);
-=======
 				audioSource.PlayOneShot(audioClip, volumeScaleWhenPlayOneShot);
->>>>>>> upstream/main
 			}
 			else
 			{

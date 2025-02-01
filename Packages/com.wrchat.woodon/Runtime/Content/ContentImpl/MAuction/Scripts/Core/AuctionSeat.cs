@@ -4,79 +4,79 @@ using VRC.SDKBase;
 
 namespace WRC.Woodon
 {
-	[UdonBehaviourSyncMode(BehaviourSyncMode.Manual)]
-	public class AuctionSeat : MSeat
-	{
-		[field: Header("_" + nameof(AuctionSeat))]
-		[field: UdonSynced] public int TryTime { get; private set; } = NONE_INT;
-		public int RemainPoint => IntData;
-		public int TryPoint => TurnData;
-		
-		[SerializeField] private MValue tryPoint_MValue;
-		[SerializeField] private Timer timer;
-		[SerializeField] private MSFXManager mSFXManager;
+    [UdonBehaviourSyncMode(BehaviourSyncMode.Manual)]
+    public class AuctionSeat : MSeat
+    {
+        [field: Header("_" + nameof(AuctionSeat))]
+        [field: UdonSynced] public int TryTime { get; private set; } = NONE_INT;
+        public int RemainPoint => IntData;
+        public int TryPoint => TurnData;
 
-		public void UpdateTryPoint()
-		{
-			if (contentManager.CurGameState != (int)AuctionState.AuctionTime)
-				return;
+        [SerializeField] private MValue tryPoint_MValue;
+        [SerializeField] private Timer timer;
+        [SerializeField] private MSFXManager mSFXManager;
 
-			AuctionManager auctionManager = (AuctionManager)contentManager;
+        public void UpdateTryPoint()
+        {
+            if (contentManager.ContentState != (int)AuctionState.AuctionTime)
+                return;
 
-			if (auctionManager.GetMaxTurnData() >= tryPoint_MValue.Value)
-				return;
+            AuctionManager auctionManager = (AuctionManager)contentManager;
 
-			SetTryTime(Networking.GetServerTimeInMilliseconds());
-			TurnData = tryPoint_MValue.Value;
-			SerializeData();
-		}
+            if (auctionManager.GetMaxTurnData() >= tryPoint_MValue.Value)
+                return;
 
-		public void SetTryTime(int newTryTime)
-		{
-			SetOwner();
-			TryTime = newTryTime;
-			RequestSerialization();
-		}
+            SetTryTime(Networking.GetServerTimeInMilliseconds());
+            TurnData = tryPoint_MValue.Value;
+            SerializeData();
+        }
 
-		protected override void OnDataChanged(DataChangeState changeState)
-		{
-			base.OnDataChanged(changeState);
+        public void SetTryTime(int newTryTime)
+        {
+            SetOwner();
+            TryTime = newTryTime;
+            RequestSerialization();
+        }
 
-			if (changeState != DataChangeState.None)
-			{
-				tryPoint_MValue.SetMinMaxValue(0, IntData, IsOwner());
-			}
-		}
+        protected override void OnDataChanged(DataChangeState changeState)
+        {
+            base.OnDataChanged(changeState);
 
-		protected override void OnTargetChanged(DataChangeState changeState)
-		{
-			base.OnTargetChanged(changeState);
-			
-			if (changeState != DataChangeState.None)
-			{
-				if (IsTargetPlayer())
-					tryPoint_MValue.SetValue(0);
-			}
-		}
+            if (changeState != DataChangeState.None)
+            {
+                tryPoint_MValue.SetMinMaxValue(0, IntData, IsOwner());
+            }
+        }
 
-		protected override void OnTurnDataChange(DataChangeState changeState)
-		{
-			base.OnTurnDataChange(changeState);
+        protected override void OnTargetChanged(DataChangeState changeState)
+        {
+            base.OnTargetChanged(changeState);
 
-			if (contentManager.CurGameState != (int)AuctionState.AuctionTime)
-				return;
+            if (changeState != DataChangeState.None)
+            {
+                if (IsTargetPlayer())
+                    tryPoint_MValue.SetValue(0);
+            }
+        }
 
-			if (changeState != DataChangeState.Greater)
-				return;
+        protected override void OnTurnDataChange(DataChangeState changeState)
+        {
+            base.OnTurnDataChange(changeState);
 
-			if (IsOwner(contentManager.gameObject) == false)
-				return;
+            if (contentManager.ContentState != (int)AuctionState.AuctionTime)
+                return;
 
-			if (timer != null)
-			{
-				timer.StartTimer();
-				mSFXManager.PlaySFX_G(1);
-			}
-		}
-	}
+            if (changeState != DataChangeState.Greater)
+                return;
+
+            if (IsOwner(contentManager.gameObject) == false)
+                return;
+
+            if (timer != null)
+            {
+                timer.StartTimer();
+                mSFXManager.PlaySFX_G(1);
+            }
+        }
+    }
 }

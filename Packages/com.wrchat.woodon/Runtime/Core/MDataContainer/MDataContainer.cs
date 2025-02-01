@@ -14,11 +14,7 @@ namespace WRC.Woodon
 		[field: SerializeField, TextArea(3, 10)] public string[] StringData { get; set; }
 		[field: SerializeField] public Sprite[] Sprites { get; set; }
 
-<<<<<<< HEAD
-		[SerializeField] protected MData mData;
-=======
 		[SerializeField] protected WJson wJson;
->>>>>>> upstream/main
 
 		public int RuntimeInt { get; set; } = NONE_INT;
 		public bool RuntimeBool { get; set; } = false;
@@ -33,31 +29,14 @@ namespace WRC.Woodon
 
 		public virtual void Init()
 		{
-<<<<<<< HEAD
-			if (mData == null)
-				return;
-
-			mData.RegisterListener(this, nameof(ParseData), MDataEvent.OnDeserialization);
-=======
 			if (wJson == null)
 				return;
 
 			wJson.RegisterListener(this, nameof(ParseData), WJsonEvent.OnDeserialization);
->>>>>>> upstream/main
 		}
 
 		public virtual void SerializeData()
 		{
-<<<<<<< HEAD
-			if (mData == null)
-				return;
-
-			mData.SetData("RuntimeInt", RuntimeInt);
-			mData.SetData("RuntimeBool", RuntimeBool);
-			mData.SetData("RuntimeString", RuntimeString);
-
-			mData.SerializeData();
-=======
 			if (wJson == null)
 				return;
 
@@ -66,26 +45,16 @@ namespace WRC.Woodon
 			wJson.SetData("RuntimeString", RuntimeString);
 
 			wJson.SerializeData();
->>>>>>> upstream/main
 		}
 
 		public virtual void ParseData()
 		{
-<<<<<<< HEAD
-			if (mData == null)
-				return;
-
-			RuntimeInt = (int)mData.DataDictionary["RuntimeInt"].Double;
-			RuntimeBool = mData.DataDictionary["RuntimeBool"].Boolean;
-			RuntimeString = mData.DataDictionary["RuntimeString"].String;
-=======
 			if (wJson == null)
 				return;
 
 			RuntimeInt = (int)wJson.GetData("RuntimeInt").Double;
 			RuntimeBool = wJson.GetData("RuntimeBool").Boolean;
 			RuntimeString = wJson.GetData("RuntimeString").String;
->>>>>>> upstream/main
 
 			SendEvents();
 		}

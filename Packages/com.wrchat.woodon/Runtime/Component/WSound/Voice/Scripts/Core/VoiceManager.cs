@@ -46,25 +46,6 @@ namespace WRC.Woodon
 			UpdateVoiceLoop();
 		}
 
-<<<<<<< HEAD
-		private bool isInited = false;
-
-		private void Start() => Init();
-
-		private void Init()
-		{
-			if (isInited)
-				return;
-			isInited = true;
-
-			foreach (VoiceUpdater voiceUpdater in voiceUpdaters)
-				voiceUpdater.Init(this);
-
-			UpdateVoiceLoop();
-		}
-
-=======
->>>>>>> upstream/main
 		public void UpdateVoiceLoop()
 		{
 			if (useLerp || updateTerm <= 0)

@@ -4,214 +4,215 @@ using UnityEngine;
 
 namespace WRC.Woodon
 {
-	[UdonBehaviourSyncMode(BehaviourSyncMode.Manual)]
-	public class AuctionManager : ContentManager
-	{
-		[Header("_" + nameof(AuctionManager))]
-		[SerializeField] private TextMeshProUGUI debugText;
-		[SerializeField] private Timer timer;
-		[SerializeField] private TextMeshProUGUI[] maxTryPointTexts;
-		[SerializeField] private MSFXManager mSFXManager;
+    [DefaultExecutionOrder(-10000)]
+    [UdonBehaviourSyncMode(BehaviourSyncMode.Manual)]
+    public class AuctionManager : ContentManager
+    {
+        [Header("_" + nameof(AuctionManager))]
+        [SerializeField] private TextMeshProUGUI debugText;
+        [SerializeField] private Timer timer;
+        [SerializeField] private TextMeshProUGUI[] maxTryPointTexts;
+        [SerializeField] private MSFXManager mSFXManager;
 
-		public int WinnerIndex { get; private set; } = NONE_INT;
-		public AuctionSeat MaxTryPointSeat { get; private set; } = null;
+        public int WinnerIndex { get; private set; } = NONE_INT;
+        public AuctionSeat MaxTryPointSeat { get; private set; } = null;
 
-		protected override void OnGameStateChange(DataChangeState changeState)
-		{
-			if (changeState == DataChangeState.Equal)
-				return;
+        protected override void OnContentStateChange(DataChangeState changeState)
+        {
+            if (changeState == DataChangeState.Equal)
+                return;
 
-			MaxTryPointSeat = GetMaxTryPointSeat();
+            MaxTryPointSeat = GetMaxTryPointSeat();
 
-			switch ((AuctionState)CurGameState)
-			{
-				case AuctionState.Wait:
-					// 경매 대기
-					WinnerIndex = NONE_INT;
-					OnWait();
-					break;
-				case AuctionState.ShowTarget:
-					// 경매 대상 공개
-					OnShowTarget();
-					break;
-				case AuctionState.AuctionTime:
-					// 경매 시간
-					OnAuctionTime();
-					break;
-				case AuctionState.WaitForResult:
-					// 경매 결과 대기
-					OnWaitForResult();
-					break;
-				case AuctionState.CheckResult:
-					// 경매 결과 확인
-					OnCheckResult();
-					break;
-				case AuctionState.ApplyResult:
-					// 경매 결과 적용
-					OnApplyResult();
-					break;
-			}
+            switch ((AuctionState)ContentState)
+            {
+                case AuctionState.Wait:
+                    // 경매 대기
+                    WinnerIndex = NONE_INT;
+                    OnWait();
+                    break;
+                case AuctionState.ShowTarget:
+                    // 경매 대상 공개
+                    OnShowTarget();
+                    break;
+                case AuctionState.AuctionTime:
+                    // 경매 시간
+                    OnAuctionTime();
+                    break;
+                case AuctionState.WaitForResult:
+                    // 경매 결과 대기
+                    OnWaitForResult();
+                    break;
+                case AuctionState.CheckResult:
+                    // 경매 결과 확인
+                    OnCheckResult();
+                    break;
+                case AuctionState.ApplyResult:
+                    // 경매 결과 적용
+                    OnApplyResult();
+                    break;
+            }
 
-			base.OnGameStateChange(changeState);
-		}
+            base.OnContentStateChange(changeState);
+        }
 
-		protected virtual void OnWait()
-		{
-			MDebugLog(nameof(OnWait));
-			
-			if (IsOwner() == false)
-				return;
+        protected virtual void OnWait()
+        {
+            MDebugLog(nameof(OnWait));
 
-			foreach (AuctionSeat auctionSeat in MSeats)
-			{
-				auctionSeat.SetTryTime(NONE_INT);
-				auctionSeat.TurnData = 0;
-				auctionSeat.SerializeData();
-			}
-		}
+            if (IsOwner() == false)
+                return;
 
-		protected virtual void OnShowTarget()
-		{
-			MDebugLog(nameof(OnShowTarget));
+            foreach (AuctionSeat auctionSeat in MSeats)
+            {
+                auctionSeat.SetTryTime(NONE_INT);
+                auctionSeat.TurnData = 0;
+                auctionSeat.SerializeData();
+            }
+        }
 
-			mSFXManager.PlaySFX_L(0);
-			
-			if (IsOwner() == false)
-				return;
-		}
+        protected virtual void OnShowTarget()
+        {
+            MDebugLog(nameof(OnShowTarget));
 
-		protected virtual void OnAuctionTime()
-		{
-			MDebugLog(nameof(OnAuctionTime));
+            mSFXManager.PlaySFX_L(0);
 
-			mSFXManager.PlaySFX_L(1);
-			
-			if (IsOwner() == false)
-				return;
-			
-			if (timer != null)
-				timer.StartTimer();
-		}
+            if (IsOwner() == false)
+                return;
+        }
 
-		protected virtual void OnWaitForResult()
-		{
-			MDebugLog(nameof(OnWaitForResult));
-	
-			mSFXManager.PlaySFX_L(2);
-			
-			if (IsOwner() == false)
-				return;
+        protected virtual void OnAuctionTime()
+        {
+            MDebugLog(nameof(OnAuctionTime));
 
-			if (timer != null)
-				timer.ResetTimer();
-		}
+            mSFXManager.PlaySFX_L(1);
 
-		protected virtual void OnCheckResult()
-		{
-			MDebugLog(nameof(OnCheckResult));
+            if (IsOwner() == false)
+                return;
 
-			// 경매 결과 확인 (적용 전)
+            if (timer != null)
+                timer.StartTimer();
+        }
 
-			if (MaxTryPointSeat != null)
-			{
-				mSFXManager.PlaySFX_L(3);
-			}
-			else
-			{
-				mSFXManager.PlaySFX_L(4);
-				debugText.text = $"No Winner.";
-				return;
-			}
+        protected virtual void OnWaitForResult()
+        {
+            MDebugLog(nameof(OnWaitForResult));
 
-			WinnerIndex = MaxTryPointSeat.Index;
-			debugText.text = $"{MaxTryPointSeat.TargetPlayerID} is Winner. ({MaxTryPointSeat.TryPoint})";
+            mSFXManager.PlaySFX_L(2);
 
-			if (IsOwner() == false)
-				return;
-		}
+            if (IsOwner() == false)
+                return;
 
-		protected virtual void OnApplyResult()
-		{
-			MDebugLog(nameof(OnApplyResult));
+            if (timer != null)
+                timer.ResetTimer();
+        }
 
-			mSFXManager.PlaySFX_L(5);
+        protected virtual void OnCheckResult()
+        {
+            MDebugLog(nameof(OnCheckResult));
 
-			if (IsOwner() == false)
-				return;
-		
-			// 경매 결과 적용
-			if (MaxTryPointSeat == null)
-			{
-				debugText.text = $"No Winner.";
-				return;
-			}
+            // 경매 결과 확인 (적용 전)
 
-			MaxTryPointSeat.IntData = MaxTryPointSeat.RemainPoint - MaxTryPointSeat.TryPoint;
-			MaxTryPointSeat.SerializeData();
+            if (MaxTryPointSeat != null)
+            {
+                mSFXManager.PlaySFX_L(3);
+            }
+            else
+            {
+                mSFXManager.PlaySFX_L(4);
+                debugText.text = $"No Winner.";
+                return;
+            }
 
-			debugText.text = $"{MaxTryPointSeat.TargetPlayerID} Gets @ by {MaxTryPointSeat.TryPoint} Point";
+            WinnerIndex = MaxTryPointSeat.Index;
+            debugText.text = $"{MaxTryPointSeat.TargetPlayerID} is Winner. ({MaxTryPointSeat.TryPoint})";
 
-			// foreach (AuctionSeat auctionSeat in Seats)
-			// {
-			// 	auctionSeat.SetTryTime(NONE_INT);
-			// 	auctionSeat.SetTurnData(0);
-			// }
-		}
+            if (IsOwner() == false)
+                return;
+        }
 
-		public override void UpdateContent()
-		{
-			MDebugLog(nameof(UpdateContent));
-			base.UpdateContent();
+        protected virtual void OnApplyResult()
+        {
+            MDebugLog(nameof(OnApplyResult));
 
-			int maxPoint = GetMaxTurnData();
-			foreach (TextMeshProUGUI maxTryPointText in maxTryPointTexts)
-				maxTryPointText.text = maxPoint.ToString();
-		}
+            mSFXManager.PlaySFX_L(5);
 
-		public void NextStateWhenTimeOver()
-		{
-			MDebugLog(nameof(NextStateWhenTimeOver));
-			
-			if (CurGameState == (int)AuctionState.AuctionTime)
-				SetGameState((int)AuctionState.WaitForResult);
-		}
+            if (IsOwner() == false)
+                return;
 
-		private AuctionSeat GetMaxTryPointSeat()
-		{
-			MSeat[] maxTryPointSeats = GetMaxTurnDataSeats();
-			
-			if (maxTryPointSeats.Length == 0)
-			{
-				debugText.text = $"No Winner.";
-				return null;
-			}
+            // 경매 결과 적용
+            if (MaxTryPointSeat == null)
+            {
+                debugText.text = $"No Winner.";
+                return;
+            }
 
-			int maxTryPoint = maxTryPointSeats[0].TurnData;
+            MaxTryPointSeat.IntData = MaxTryPointSeat.RemainPoint - MaxTryPointSeat.TryPoint;
+            MaxTryPointSeat.SerializeData();
 
-			if (maxTryPoint <= 0)
-			{
-				debugText.text = $"No Winner.";
-				return null;
-			}
+            debugText.text = $"{MaxTryPointSeat.TargetPlayerID} Gets @ by {MaxTryPointSeat.TryPoint} Point";
 
-			if (maxTryPointSeats.Length >= 2)
-			{
-				int fastestTryTime = int.MaxValue;
-				AuctionSeat fastestTryTimeSeat = null;
+            // foreach (AuctionSeat auctionSeat in Seats)
+            // {
+            // 	auctionSeat.SetTryTime(NONE_INT);
+            // 	auctionSeat.SetTurnData(0);
+            // }
+        }
 
-				foreach (AuctionSeat auctionSeat in maxTryPointSeats)
-				{
-					if (auctionSeat.TryTime < fastestTryTime)
-					{
-						fastestTryTime = auctionSeat.TryTime;
-						fastestTryTimeSeat = auctionSeat;
-					}
-				}
+        public override void UpdateContent()
+        {
+            MDebugLog(nameof(UpdateContent));
+            base.UpdateContent();
 
-				return fastestTryTimeSeat;
-			}
+            int maxPoint = GetMaxTurnData();
+            foreach (TextMeshProUGUI maxTryPointText in maxTryPointTexts)
+                maxTryPointText.text = maxPoint.ToString();
+        }
 
-			return (AuctionSeat)maxTryPointSeats[0];
-		}
-	}
+        public void NextStateWhenTimeOver()
+        {
+            MDebugLog(nameof(NextStateWhenTimeOver));
+
+            if (ContentState == (int)AuctionState.AuctionTime)
+                SetContentState((int)AuctionState.WaitForResult);
+        }
+
+        private AuctionSeat GetMaxTryPointSeat()
+        {
+            MSeat[] maxTryPointSeats = GetMaxTurnDataSeats();
+
+            if (maxTryPointSeats.Length == 0)
+            {
+                debugText.text = $"No Winner.";
+                return null;
+            }
+
+            int maxTryPoint = maxTryPointSeats[0].TurnData;
+
+            if (maxTryPoint <= 0)
+            {
+                debugText.text = $"No Winner.";
+                return null;
+            }
+
+            if (maxTryPointSeats.Length >= 2)
+            {
+                int fastestTryTime = int.MaxValue;
+                AuctionSeat fastestTryTimeSeat = null;
+
+                foreach (AuctionSeat auctionSeat in maxTryPointSeats)
+                {
+                    if (auctionSeat.TryTime < fastestTryTime)
+                    {
+                        fastestTryTime = auctionSeat.TryTime;
+                        fastestTryTimeSeat = auctionSeat;
+                    }
+                }
+
+                return fastestTryTimeSeat;
+            }
+
+            return (AuctionSeat)maxTryPointSeats[0];
+        }
+    }
 }

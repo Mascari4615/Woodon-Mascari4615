@@ -1,21 +1,14 @@
 ﻿using UdonSharp;
 using UnityEngine;
 using VRC.SDKBase;
-<<<<<<< HEAD
-using static WRC.Woodon.MUtil;
-=======
 using static WRC.Woodon.WUtil;
->>>>>>> upstream/main
 
 namespace WRC.Woodon
 {
 	[UdonBehaviourSyncMode(BehaviourSyncMode.None)]
 	public class VoiceUpdater_Tag : VoiceUpdater
 	{
-<<<<<<< HEAD
-=======
 		[Header("_" + nameof(VoiceUpdater_Tag))]
->>>>>>> upstream/main
 		[SerializeField] private VoiceTagger[] voiceTaggers;
 
 		public override void UpdateVoice(VRCPlayerApi[] playerApis, VoiceState[] voiceStates)
